@@ -18,7 +18,6 @@ from scipy import signal
 print('Este programa crea una tensor de espectogramas normalizados en frecuencia y amplitud, a partir de una carpeta con diferentes archivos ".wav". ')
 print('Cada archivo de audio, es unificado a extensión .wav y en salida mono')
 print('La dimensión del tensor generado será [cantidad_archivos, X,Y] ')
-print('Para guardar el tensor en un archivo .txt, se utilizaran dos archivos. Uno que tendrá las muestra y otro la forma a rearmar')
 print('Los archivos de audio pueden ser de diferentes tamaños,y no necesitan estar normalizados, el programa lo hace')
 print('El programa guarda la matriz creada como un archivo .py y la ubica donde el usuario desee')
 print('El programa preguntará, en primer lugar, la ubicación de la carpeta que se quiere leer.')
@@ -45,9 +44,7 @@ cantidad_archivos=len(lista_archivos)  #Me dice la cantidad de archivos que hay 
 #2° PASO
 ## Remuestreo de los datos. Para realizar una normalización en frecuencia es necesario remuestrar longitud de los archivos .wav . 
 # El usuario elije la frecuencia de remuestreo.
-#
-# ---------------------------------------------------------------------------------
-
+## ---------------------------------------------------------------------------------
 
 print('Ingrese la frecuencia de remuestreo deseada')
 frec_obj=int(input())
@@ -75,7 +72,7 @@ for j  in range(cantidad_archivos):
 z=0
 #print(tramos)
 t=0
-# se comineza con la etapa de normalización y segmentación.
+# se comienza con la etapa de normalización y segmentación.
 Pxx=[]
 if   tamaño_lista_truncada != 0 :     #se normalizan los datos y se segmentan las muestras
   for x in range (tamaño_lista_truncada):
@@ -105,15 +102,9 @@ else:
 #forma=np.array([t,s,h])
 print('ingrese el nombre con el que quiere guardar la matriz de datos (sin extension txt)')
 e=input()
-np.save(e+'log',Pxx)
+np.save(e,Pxx)    # La matriz de espectrograma logaritmica
 np.save('frecuencia',frecuencia) #conviene guardarlo para después poder dibujar
 np.save('tiempo',tiempo) #conviene guardarlo para después poder dibujar
 #np.save(e+'shape',forma)
 
-#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/ballena franca glacial
-#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/blue_whale
-#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/Bowhead whale
-#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/Fin_back_whale   ++rorcual_comun
-#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/gray_whale      ++ballena_gris
-#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/Minke    ++m
-# C:/Users/el_lu/Desktop/proyectospython/Datos/SONIDOS_CLASES/RUIDO_MAR
+#C:/Users/el_lu/Desktop/proyectospython/Datos/Ballenaa/ballena franca glacial    (Esta es la forma de ingresar la ruta)
